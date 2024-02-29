@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Homework1</title>
+</head>
+<body>
+
+<!-- Задача 1 -->
+
+<script>
+  const arr = [1, 5, 7, 9];
+  console.log(Math.min(...arr));
+</script>
+
+<!-- Задача 2 -->
+
+<script>
+  function createCounter() {
+    let count = 0;
+    return {
+      increment: () => count++,
+      decrement: () => count--,
+      getCount: () => count
+    };
+  }
+  const counter = createCounter();
+  counter.increment();
+  console.log(counter.getCount());
+  counter.decrement();
+  console.log(counter.getCount());
+</script>
+
+<!-- Задача 3 -->
+
+<script>
+  function findElementByClass(root, className) {
+    if (!root || !root.classList) {
+      return null;
+    }
+    if (root.classList.contains(className)) {
+      return root;
+    }
+    for (const childNode of root.childNodes) {
+      if (childNode.nodeType === Node.ELEMENT_NODE) {
+        const result = findElementByClass(childNode, className);
+        if (result !== null) {
+          return result;
+        }
+      }
+    }
+    return null;
+  }
+
+  const rootElement = document.getElementById('root');
+  const targetElement = findElementByClass(rootElement, 'my-class');
+  console.log(targetElement);
+</script>
+
+</body>
+</html>
